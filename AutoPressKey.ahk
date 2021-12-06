@@ -1,6 +1,6 @@
 ; CONFIG
 KeyToPress = Space 		; 
-Interval = 1000   		; In milliseconds
+Interval = 30000   		; In milliseconds
 
 #MaxThreadsPerHotkey 100
 F12::
