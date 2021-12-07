@@ -1,6 +1,7 @@
 ; CONFIG
 KeyToPress = Space 		; 
-Interval = 30000   		; In milliseconds
+MinInterval = 20000   	; In milliseconds
+MaxInterval = 40000		; In milliseconds
 
 #MaxThreadsPerHotkey 100
 F12::
@@ -9,8 +10,9 @@ F12::
 	ToolTip ; remove previous tooltip if any
 	If (toggle)
 	{
-   		IntervalInSeconds := Floor(Interval / 1000)
-		ToolTip, Engaged with key %KeyToPress% and Interval of %IntervalInSeconds% seconds, 0, 0 
+   		MinIntervalInSeconds := Floor(MinInterval / 1000)
+		MaxIntervalInSeconds := Floor(MaxInterval / 1000)
+		ToolTip, Engaged with key %KeyToPress% and Interval from %MinIntervalInSeconds% to %MaxIntervalInSeconds% seconds, 0, 0 
 	} Else
 	{
 		ToolTip, Disengaged, 0, 0 
@@ -31,8 +33,8 @@ F12::
 			Sleep, 100
 			Send, {%KeyToPress% up}
 		}
-
-		Sleep, %Interval%
+		Random, Interval, MinInterval, MaxInterval
+		Sleep, Interval
 	}
 Return
 
