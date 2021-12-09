@@ -27,7 +27,7 @@ F12::
 			Break
 		}
 
-		If (WinActive("ahk_class [Paste window class here]"))
+		If (WinActive("ahk_class Paste window class here"))
 		{
 			Send, {%KeyToPress% down}
 			Sleep, 100
